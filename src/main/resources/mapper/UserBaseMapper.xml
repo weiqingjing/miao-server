@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ding.ding.miao.server.mapper.UserBaseMapper">
+
+  <resultMap id="BaseResultMap" type="com.ding.ding.miao.server.domain.entity.UserBase">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mobile" jdbcType="CHAR" property="mobile" />
+    <result column="open_id" jdbcType="CHAR" property="openId" />
+    <result column="union_id" jdbcType="CHAR" property="unionId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, mobile, open_id, union_id
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_base
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_base
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ding.ding.miao.server.domain.entity.UserBase" useGeneratedKeys="true">
+    insert into user_base (mobile, open_id, union_id
+      )
+    values (#{mobile,jdbcType=CHAR}, #{openId,jdbcType=CHAR}, #{unionId,jdbcType=CHAR}
+      )
+  </insert>
+
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.ding.ding.miao.server.domain.entity.UserBase" useGeneratedKeys="true">
+    insert into user_base
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="unionId != null">
+        union_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mobile != null">
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=CHAR},
+      </if>
+      <if test="unionId != null">
+        #{unionId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.ding.ding.miao.server.domain.entity.UserBase">
+    update user_base
+    <set>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=CHAR},
+      </if>
+      <if test="unionId != null">
+        union_id = #{unionId,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.ding.ding.miao.server.domain.entity.UserBase">
+    update user_base
+    set mobile = #{mobile,jdbcType=CHAR},
+      open_id = #{openId,jdbcType=CHAR},
+      union_id = #{unionId,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>
