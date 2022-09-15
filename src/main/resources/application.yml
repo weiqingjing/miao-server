@@ -13,3 +13,6 @@ server:
 
 mini-app:
   appId: wx4d98dc9b3984f23f
+
+log:
+  path: aaa

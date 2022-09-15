@@ -1,6 +1,7 @@
 package com.ding.ding.miao.server.mapper;
 
 import com.ding.ding.miao.server.domain.entity.UserBase;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -8,6 +9,7 @@ import org.springframework.test.annotation.Rollback;
 
 import javax.annotation.Resource;
 
+@Slf4j
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class UserBaseMapperTest {
@@ -36,7 +38,7 @@ class UserBaseMapperTest {
     @Test
     void selectByPrimaryKey() {
         UserBase userBase =  userBaseMapper.selectByPrimaryKey(4L);
-        System.out.println(userBase);
+        log.info(userBase.getMobile());
     }
 
     @Test
