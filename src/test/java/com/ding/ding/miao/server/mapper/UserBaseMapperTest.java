@@ -35,7 +35,7 @@ class UserBaseMapperTest {
 
     @Test
     void selectByPrimaryKey() {
-        UserBase userBase =  userBaseMapper.selectByPrimaryKey(1L);
+        UserBase userBase =  userBaseMapper.selectByPrimaryKey(4L);
         System.out.println(userBase);
     }
 
